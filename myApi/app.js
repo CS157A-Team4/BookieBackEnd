@@ -4,7 +4,7 @@ const https = require('https')
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const connection = require('./database');
+const connection = require('./api/routes/database');
 const testAPIRouter = require('./auth.js');
 const cors = require('cors');
 app.route('/tables')
@@ -20,7 +20,6 @@ app.route('/tables')
   });
 
   
-  app.use('/blah', testAPIRouter);
   // Port 8080 for Google App Engine
   app.set('port', process.env.PORT || 8090);
   app.listen(8090);
