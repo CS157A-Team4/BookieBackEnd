@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Welcome to the SJSUBookie Endpoints' });
+  res.render('index', { title: 'SJSUBookie Endpoints' });
 });
 
 module.exports = router;
