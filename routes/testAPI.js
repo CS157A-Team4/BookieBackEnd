@@ -15,4 +15,14 @@ router.get('/tables',function(req, res, next) {
       }
     );
   });
+  router.get('/tables',function(req, res, next) {
+    console.log("hi");
+  connection.query(
+    "SELECT * FROM posts;", 
+    function(error, results, fields) {
+      if (error) throw error;
+      res.json(results);
+    }
+  );
+});
 module.exports = router;
