@@ -15,7 +15,7 @@ router.get('/tables',function(req, res, next) {
       }
     );
   });
-  router.get('/tables',function(req, res, next) {
+  router.get('/search',function(req, res, next) {
     console.log("hi");
   connection.query(
     "SELECT * FROM posts;", 
