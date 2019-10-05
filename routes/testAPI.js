@@ -29,6 +29,7 @@ router.get('/tables',function(req, res, next) {
     else if(course === undefined && name !== undefined){
       conditions = 'WHERE tb1.book LIKE %' + name+'%';
     }
+    console.log(conditions);
   connection.query(
     `SELECT tb1.*, tb2.firstname, tb2.surname FROM posts tb1 JOIN user tb2 on tb1.seller = tb2.iduser ${conditions};`,
     function(error, results, fields) {
