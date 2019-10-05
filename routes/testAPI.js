@@ -20,13 +20,13 @@ router.get('/tables',function(req, res, next) {
     let course =  req.query.course;
     let name = req.query.name;
     var conditions ='';
-    if(course !== undefined && name !== undefined){
+    if(course !== '' && name !== ''){
         conditions = 'WHERE tb1.course = ' + course +' AND tb1.book LIKE %' + name +'%';
     }
-    else if(course !== undefined && name === undefined){
+    else if(course !== '' && name === ''){
       conditions = 'WHERE tb1.course = ' + course;
     }
-    else if(course === undefined && name !== undefined){
+    else if(course === '' && name !== ''){
       conditions = 'WHERE tb1.book LIKE %' + name+'%';
     }
     console.log(conditions);
