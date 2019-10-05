@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPI = require('./routes/testAPI');
 var posts = require('./routes/postrelated/posts');
+const bodyParser = require("body-parser");
+
 var app = express();
 app.use(cors())
 app.use(function(req, res, next) {
@@ -28,6 +30,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPI);
 app.use('/posts', posts);
+app.use(bodyParser.json({
+  extended: true
+}));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
