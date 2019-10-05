@@ -16,7 +16,7 @@ router.post('/create', async function(req, res) {
     poster = req.body.poster;
     today = req.body.date;
     queryString = `INSERT INTO posts (\`book\`,\`author\`,\`course\`,\`condition\`,\`body\`,\`image\`,\`price\`, \`seller\`,\`date\`) \
-    values(${bookname}, ${author}, ${condition},${course},${description},${image},${price},${poster},${today});`;
+    values("${bookname}","${author}", "${condition}","${course}","${description}","${image}","${price}","${poster}","${today}");`;
     connection.query(
         queryString,
         function(error, results, fields) {
