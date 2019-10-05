@@ -15,7 +15,7 @@ router.get('/tables',function(req, res, next) {
       }
     );
   });
-  router.get('/search', async (req, res)=>{
+  router.get('/search', function(req, res){
     console.log("hi");
     let course =  req.query.course;
     let name = req.query.bname;
