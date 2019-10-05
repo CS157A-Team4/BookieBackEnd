@@ -20,8 +20,11 @@ router.post('/create', async function(req, res) {
     connection.query(
         queryString,
         function(error, results, fields) {
-          if (error) throw error;
-          res.json(results);
+          if (error){
+              console.log(error);
+          }
+          else{
+          res.json(results)};
         }
       );
     });
