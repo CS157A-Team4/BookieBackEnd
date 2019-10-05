@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', async function(req, res) {
+    console.log("okay im here");
     author = req.body.author
     bookname = req.body.bookname
     condition = req.body.condition
@@ -17,6 +18,7 @@ router.post('/create', async function(req, res) {
     today = req.body.date;
     queryString = `INSERT INTO posts (\`book\`,\`author\`,\`course\`,\`condition\`,\`body\`,\`image\`,\`price\`, \`seller\`,\`date\`) \
     values("${bookname}","${author}", "${course}","${condition}","${description}","${image}",${price},"${poster}","${today}");`;
+    console.log(queryString);
     connection.query(
         queryString,
         function(error, results, fields) {
