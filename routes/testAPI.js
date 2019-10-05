@@ -25,7 +25,7 @@ router.get('/tables',function(req, res, next) {
         conditions = 'WHERE tb1.course = \'' + course +'\' AND tb1.book LIKE %\'' + name +'%\'';
     }
     else if(course !== '' && name === ''){
-      conditions = '\'WHERE tb1.course = \'' + course;
+      conditions = 'WHERE tb1.course = \'' + course +'\'';
     }
     else if(course === '' && name !== ''){
       conditions = 'WHERE tb1.book LIKE %\'' + name+'%\'';
