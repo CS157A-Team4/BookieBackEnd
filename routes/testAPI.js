@@ -18,8 +18,9 @@ router.get('/tables',function(req, res, next) {
   router.get('/search', async (req, res)=>{
     console.log("hi");
     let course =  req.query.course;
-    let name = req.query.name;
-    var conditions ='';
+    let name = req.query.bname;
+    console.log("course:" + typeof(course));
+    console.log("name: "+typeof(name));
     if(course !== '' && name !== ''){
         conditions = 'WHERE tb1.course = ' + course +' AND tb1.book LIKE %' + name +'%';
     }
