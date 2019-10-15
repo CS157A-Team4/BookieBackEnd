@@ -24,30 +24,39 @@ router.get('/:id', async (req, res) =>{
 });
 router.post('/create', async function(req, res) {
     console.log("okay im here");
-    // author = req.body.author;
-    // bookname = req.body.bookname;
-    // condition = req.body.condition;
-    // course = req.body.course;
-    // description = req.body.description;
+    author = req.body.author;
+    bookname = req.body.bookname;
+    condition = req.body.condition;
+    course = req.body.course;
+    description = req.body.description;
     image = req.body.image;
-    // price = req.body.price;
-    // poster = req.body.poster;
-    // today = req.body.date;
+    price = req.body.price;
+    poster = req.body.poster;
+    today = req.body.date;
     imageString = `INSERT INTO PostImage (\`postId\`, \`Image\`) VALUES(0,"${image}");`;
     imageIdGetString = `SELECT LAST_INSERT_ID();`;
- //   queryString = `INSERT INTO posts (\`book\`,\`author\`,\`course\`,\`condition\`,\`body\`,\`image\`,\`price\`, \`seller\`,\`date\`) \
-  //  values("${bookname}","${author}", "${course}","${condition}","${description}","${image}",${price},"${poster}","${today}");`;
-  //  console.log(queryString);
+    console.log(queryString);
     connection.query(
-        imageString,imageIdGetString,
+        imageString,
         function(error, results, fields) {
           if (error){
               console.log(error);
           }
           else{
-          console.log(results.insertId);
-          res.json(results)};
-        }
+          let imageId = results.insertId;
+          queryString = `INSERT INTO Post (\`title\`,\`author\`,\`course\`,\`condition\`,\`body\`,\`imageId\`,\`price\`, \`seller\`,\`date\`) \
+    values("${bookname}","${author}", "${course}","${condition}","${description}","${imageId}",${price},"${poster}","${today}");`;
+    
+          connection.query(
+            queryString,
+            function(error, results, fields) {
+              if (error){
+                  console.log(error);
+              }
+              else{res.json(results)}
+        })
+      }
+    }
       );
     });
 
