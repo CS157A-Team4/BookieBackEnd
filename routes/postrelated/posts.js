@@ -45,7 +45,7 @@ router.post('/create', async function(req, res) {
               console.log(error);
           }
           else{
-          console.log(results);
+          console.log(connection.insert_id());
           res.json(results)};
         }
       );
