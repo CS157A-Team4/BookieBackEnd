@@ -35,7 +35,6 @@ router.post('/create', async function(req, res) {
     today = req.body.date;
     imageString = `INSERT INTO PostImage (\`postId\`, \`Image\`) VALUES(0,"${image}");`;
     imageIdGetString = `SELECT LAST_INSERT_ID();`;
-    console.log(queryString);
     connection.query(
         imageString,
         function(error, results, fields) {
