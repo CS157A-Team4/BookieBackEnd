@@ -7,6 +7,7 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPI = require('./routes/testAPI');
+var profile = require('./routes/profile');
 var posts = require('./routes/postrelated/posts');
 const bodyParser = require("body-parser");
 
@@ -30,6 +31,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPI);
 app.use('/posts', posts);
+app.use('/profile', profile);
+
 app.use(bodyParser.json({
   extended: true
 }));
