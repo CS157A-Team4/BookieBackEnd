@@ -22,13 +22,13 @@ router.get('/tables',function(req, res, next) {
     console.log("course:" + typeof(course));
     console.log("name: "+typeof(name));
     if(course !== '' && name !== ''){
-        conditions = 'WHERE tb1.course = \'' + course +'\' AND tb1.book LIKE \'%' + name +'%\'';
+        conditions = 'WHERE tb1.course = \'' + course +'\' AND tb1.title LIKE \'%' + name +'%\'';
     }
     else if(course !== '' && name === ''){
       conditions = 'WHERE tb1.course = \'' + course +'\'';
     }
     else if(course === '' && name !== ''){
-      conditions = 'WHERE tb1.book LIKE \'%' + name+'%\'';
+      conditions = 'WHERE tb1.title LIKE \'%' + name+'%\'';
     }
     console.log(conditions);
   connection.query(
