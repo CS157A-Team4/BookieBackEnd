@@ -47,7 +47,7 @@ router.post('/create', async function(req, res) {
       );
     });
 
-    router.post('/create', async function(req, res) {
+    router.post('/createComment', async function(req, res) {
       commentor = req.body.commentor;
       when = req.body.when;
       content = req.body.content;
