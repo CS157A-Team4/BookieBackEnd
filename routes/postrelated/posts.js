@@ -65,7 +65,7 @@ router.post('/create', async function(req, res) {
             }); 
           }
           else{
-            let commentString= `SELECT tb1.*, tb2.firstname, tb2.surname FROM comments tb1 JOIN user tb2 on tb1.poster= tb2.iduser WHERE tb1.postid=${id};`;
+            let commentString= `SELECT tb1.*, tb2.firstname, tb2.surname FROM comments tb1 JOIN user tb2 on tb1.poster= tb2.iduser WHERE tb1.postid=${postid};`;
             connection.query(
               commentString,
               function(error, results, fields) {
