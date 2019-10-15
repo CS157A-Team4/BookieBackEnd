@@ -45,6 +45,7 @@ router.post('/create', async function(req, res) {
               console.log(error);
           }
           else{
+          console.log(results);
           res.json(results)};
         }
       );
