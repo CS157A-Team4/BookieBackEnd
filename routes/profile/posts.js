@@ -11,7 +11,7 @@ router.post('/save', async function(req, res) {
     postId = req.body.postId;
     imageId = req.body.imageId;
     //checkString = `SELECT * FROM SavedPost WHERE \`userId\`="${userId}" AND \`ID_POST\="${postId};`
-    queryString = `INSERT INTO SavedPost (\`userID\`, \`postType\`, \`ID_Post\`,\`imageID\`) \
+    queryString = `INSERT INTO SavedPost(\`userID\`, \`postType\`, \`ID_Post\`,\`imageID\`) \
     VALUES(${userId},"favorite", ${postId},"${imageId}");`;
     console.log(queryString);
     connection.query(
