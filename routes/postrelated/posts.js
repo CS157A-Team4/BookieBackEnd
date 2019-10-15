@@ -8,7 +8,7 @@ router.get('/:id', async (req, res) =>{
   let id =  req.params.id;
   let queryString = `SELECT tb1.*, tb2.firstname, tb2.surname FROM posts tb1 JOIN user tb2 on tb1.seller = tb2.iduser WHERE idposts=${id};`;
   let commentString= `SELECT * FROM comments WHERE postid=${id};`;
-  connection.query(queryString,commentString,
+  connection.query(queryString+commentString,
     function(error, results, fields) {
       if (error){
           console.log(error);
