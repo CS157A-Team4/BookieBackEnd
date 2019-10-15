@@ -23,13 +23,13 @@ router.get('/:id', async (req, res) =>{
 });
 router.post('/create', async function(req, res) {
     console.log("okay im here");
-    author = req.body.author
-    bookname = req.body.bookname
-    condition = req.body.condition
-    course = req.body.course
-    description = req.body.description
-    image = req.body.image
-    price = req.body.price
+    author = req.body.author;
+    bookname = req.body.bookname;
+    condition = req.body.condition;
+    course = req.body.course;
+    description = req.body.description;
+    image = req.body.image;
+    price = req.body.price;
     poster = req.body.poster;
     today = req.body.date;
     queryString = `INSERT INTO posts (\`book\`,\`author\`,\`course\`,\`condition\`,\`body\`,\`image\`,\`price\`, \`seller\`,\`date\`) \
@@ -42,6 +42,30 @@ router.post('/create', async function(req, res) {
               console.log(error);
           }
           else{
+          res.json(results)};
+        }
+      );
+    });
+
+    router.post('/create', async function(req, res) {
+      commentor = req.body.commentor;
+      when = req.body.when;
+      content = req.body.content;
+      postid = req.body.postid;
+      queryString = `INSERT INTO comments (\`poster\`,\`content\`,\`postid\`,\`when\`) \
+      values("${commentor}","${content}","${postid}","${when}");`;
+      connection.query(
+        queryString,
+        function(error, results, fields) {
+          if (error){
+            console.log("ERROR");
+            return res.status(400).json({
+              error: true,
+              message: "Error inserting the comment"
+            }); 
+          }
+          else{
+            console.log("YES");
           res.json(results)};
         }
       );
