@@ -65,8 +65,22 @@ router.post('/create', async function(req, res) {
             }); 
           }
           else{
-            console.log("YES");
-          res.json(results)};
+            let commentString= `SELECT tb1.*, tb2.firstname, tb2.surname FROM comments tb1 JOIN user tb2 on tb1.poster= tb2.iduser WHERE tb1.postid=${id};`;
+            connection.query(
+              commentString,
+              function(error, results, fields) {
+                if (error){
+                  console.log("ERROR");
+                  return res.status(400).json({
+                    error: true,
+                    message: "Error returning the comment"
+                  }); 
+                }
+                else{
+                  console.log(results);
+                res.json(results)
+                }});
+          };
         }
       );
     });
