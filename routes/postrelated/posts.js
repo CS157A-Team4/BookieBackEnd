@@ -6,13 +6,15 @@ router.get('/', function(req, res, next) {
 });
 router.get('/:id', async (req, res) =>{
   let id =  req.params.id;
-  let queryString = `SELECT tb1.*, tb2.firstname, tb2.surname FROM posts tb1 JOIN user tb2 on tb1.seller = tb2.iduser WHERE idposts=${id};`;
+  let queryString = `SELECT tb1.*, tb2.firstname, tb2.surname FROM posts tb1 JOIN user tb2 on tb1.seller = tb2.iduser WHERE idposts=${id} \
+  UNION ALL SELECT * FROM comments WHERE postid=${id};`;
   connection.query(queryString,
     function(error, results, fields) {
       if (error){
           console.log(error);
       }
       else{
+        console.log(results);
       res.json(results)};
     }
   );
