@@ -45,7 +45,7 @@ router.post('/create', async function(req, res) {
               console.log(error);
           }
           else{
-          console.log(connection.lastrowid);
+          console.log(results.insertId);
           res.json(results)};
         }
       );
