@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 });
 router.get('/:id', async (req, res) =>{
   let id =  req.params.id;
-  let queryString = `SELECT tb1.*, tb2.firstname, tb2.surname FROM posts tb1 JOIN user tb2 on tb1.seller = tb2.iduser JOIN PostImage tb3 ON tb3.imageID = tb1.imageId WHERE idposts=${id};`;
+  let queryString = `SELECT tb1.*, tb2.firstname, tb2.surname FROM Post tb1 JOIN user tb2 on tb1.seller = tb2.iduser JOIN PostImage tb3 ON tb3.imageID = tb1.imageId WHERE idposts=${id};`;
   let commentString= `SELECT tb1.*, tb2.firstname, tb2.surname FROM comments tb1 JOIN user tb2 on tb1.poster= tb2.iduser WHERE tb1.postid=${id};`;
   let saveString = `SELECT userID FROM SavedPost;`
   connection.query(queryString+commentString+saveString,
