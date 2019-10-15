@@ -24,20 +24,22 @@ router.get('/:id', async (req, res) =>{
 });
 router.post('/create', async function(req, res) {
     console.log("okay im here");
-    author = req.body.author;
-    bookname = req.body.bookname;
-    condition = req.body.condition;
-    course = req.body.course;
-    description = req.body.description;
+    // author = req.body.author;
+    // bookname = req.body.bookname;
+    // condition = req.body.condition;
+    // course = req.body.course;
+    // description = req.body.description;
     image = req.body.image;
-    price = req.body.price;
-    poster = req.body.poster;
-    today = req.body.date;
-    queryString = `INSERT INTO posts (\`book\`,\`author\`,\`course\`,\`condition\`,\`body\`,\`image\`,\`price\`, \`seller\`,\`date\`) \
-    values("${bookname}","${author}", "${course}","${condition}","${description}","${image}",${price},"${poster}","${today}");`;
-    console.log(queryString);
+    // price = req.body.price;
+    // poster = req.body.poster;
+    // today = req.body.date;
+    imageString = `INSERT INTO PostImage (\`postId\`, \`Image\`) VALUES(0,"${image}");`;
+    imageIdGetString `SELECT LAST_INSERT_ID();`;
+ //   queryString = `INSERT INTO posts (\`book\`,\`author\`,\`course\`,\`condition\`,\`body\`,\`image\`,\`price\`, \`seller\`,\`date\`) \
+  //  values("${bookname}","${author}", "${course}","${condition}","${description}","${image}",${price},"${poster}","${today}");`;
+  //  console.log(queryString);
     connection.query(
-        queryString,
+        imageString,imageIdGetString,
         function(error, results, fields) {
           if (error){
               console.log(error);
