@@ -109,7 +109,8 @@ router.post('/create', async function(req, res) {
             console.log("ERROR");
             return res.status(400).json({
               error: true,
-              message: "Error inserting the comment"
+              message: "Error inserting the comment",
+              eMessage: error
             }); 
           }
           else{
