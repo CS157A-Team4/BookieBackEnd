@@ -35,7 +35,7 @@ router.post('/edit', async function(req, res) {
   today = req.body.date;
   id = req.body.id;
   imageId = req.body.imageId;
-  imageString = `UPDATE PostImage SET Image = "${image}" WHERE imageID=${imageId}`;
+  imageString = `UPDATE PostImage SET \`Image\` = "${image}" WHERE \`imageID\`=${imageId}`;
   connection.query(
       imageString,
       function(error, results, fields) {
@@ -44,7 +44,7 @@ router.post('/edit', async function(req, res) {
         }
         else{
         let imageId = results.insertId;
-        queryString = `UPDATE Post SET title = "${bookname}", author="${author}", course="${course}", condition="${condition}", body="${description}", imageId="${imageId}", price=${price}, seller="${poster}", date="${today}" WHERE postID=${id};`;
+        queryString = `UPDATE Post SET \`title\` = "${bookname}", \`author\`="${author}", \`course\`="${course}", \`ondition\`="${condition}", \`body\`="${description}", \`imageId\`="${imageId}", \`price\`=${price}, \`seller\`="${poster}", \`date\`="${today}" WHERE \`postID\`=${id};`;
         connection.query(
           queryString,
           function(error, results, fields) {
