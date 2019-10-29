@@ -22,6 +22,41 @@ router.get('/:id', async (req, res) =>{
     }
   );
 });
+router.post('/edit', async function(req, res) {
+  console.log("okay im here");
+  author = req.body.author;
+  bookname = req.body.bookname;
+  condition = req.body.condition;
+  course = req.body.course;
+  description = req.body.description;
+  image = req.body.image;
+  price = req.body.price;
+  poster = req.body.poster;
+  today = req.body.date;
+  id = req.body.id;
+  imageId = req.body.imageId;
+  imageString = `UPDATE PostImage SET Image = "${image}" WHERE imageID=${imageId}`;
+  connection.query(
+      imageString,
+      function(error, results, fields) {
+        if (error){
+            console.log(error);
+        }
+        else{
+        let imageId = results.insertId;
+        queryString = `UPDATE Post SET title = "${bookname}", author="${author}", course="${course}", condition="${condition}", body="${description}", imageId="${imageId}", price=${price}, seller="${poster}", date="${today}");`;
+        connection.query(
+          queryString,
+          function(error, results, fields) {
+            if (error){
+                console.log(error);
+            }
+            else{res.json(results)}
+      })
+    }
+  }
+    );
+  });
 router.post('/create', async function(req, res) {
     console.log("okay im here");
     author = req.body.author;
