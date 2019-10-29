@@ -35,7 +35,9 @@ router.post('/edit', async function(req, res) {
   today = req.body.date;
   id = req.body.id;
   imageId = req.body.imageId;
+  console.log(imageId);
   imageString = `UPDATE PostImage SET \`Image\` = "${image}" WHERE \`imageID\`=${imageId}`;
+  console.log(imageString);
   connection.query(
       imageString,
       function(error, results, fields) {
