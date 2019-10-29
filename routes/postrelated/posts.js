@@ -47,6 +47,7 @@ router.post('/edit', async function(req, res) {
         else{
         let imageId = results.insertId;
         queryString = `UPDATE Post SET \`title\` = "${bookname}", \`author\`="${author}", \`course\`="${course}", \`condition\`="${condition}", \`body\`="${description}", \`imageId\`="${imageId}", \`price\`=${price}, \`seller\`="${poster}", \`date\`="${today}" WHERE \`postID\`=${id};`;
+        console.log(queryString);
         connection.query(
           queryString,
           function(error, results, fields) {
