@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/list/:id', async (req, res) =>{
     let id =  req.params.id;
-    let queryString = `SELECT user1 FROM FriendsListAndRequest WHERE user2 = ${id} UNION ALL SELECT user2 FROM FriendsListAndRequest WHERE user1 =${id};`
+    let queryString = `select f1.* from FriendsListAndRequest f1 inner join FriendsListAndRequest f2 on f1.user1 = f2.user2 and f1.user1 = f2.user2;`
     connection.query(queryString,
         function(error, results, fields) {
           if (error){
